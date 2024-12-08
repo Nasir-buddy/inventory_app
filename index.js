@@ -12,8 +12,8 @@ import { setLastVisit } from './src/middlewares/lastVisit.middleware.js';
 
 const app = express();
 
-app.use(cookieParser());
 app.use(express.static('public'));
+app.use(cookieParser());
 app.use(setLastVisit)
 app.use(session({
   secret: "alskdjflaskddlkac",
@@ -71,6 +71,6 @@ app.post(
   productsController.postUpdateProduct
 );
 
-app.listen(3000, () => {
+app.listen(5000, () => {
   console.log('Server is running on port 3000');
 });
