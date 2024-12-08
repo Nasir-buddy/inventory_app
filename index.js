@@ -7,9 +7,14 @@ import validationMiddleware from './src/middlewares/validation.middleware.js';
 import { uploadFile } from './src/middlewares/file-upload.middleware.js';
 import session from 'express-session';
 import { auth } from './src/middlewares/auth.middleware.js';
+import cookieParser from 'cookie-parser';
+import { setLastVisit } from './src/middlewares/lastVisit.middleware.js';
+
 const app = express();
 
+app.use(cookieParser());
 app.use(express.static('public'));
+app.use(setLastVisit)
 app.use(session({
   secret: "alskdjflaskddlkac",
   resave: false,
