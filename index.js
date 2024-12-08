@@ -14,7 +14,7 @@ const app = express();
 
 app.use(express.static('public'));
 app.use(cookieParser());
-app.use(setLastVisit)
+
 app.use(session({
   secret: "alskdjflaskddlkac",
   resave: false,
@@ -43,7 +43,7 @@ app.post(
   '/register',
   usersController.postRegister
 );
-app.get('/', auth, productsController.getProducts);
+app.get('/', setLastVisit, auth, productsController.getProducts);
 app.get(
   '/add-product', auth,
   productsController.getAddProduct
